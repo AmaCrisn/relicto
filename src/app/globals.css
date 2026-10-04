@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-ring: var(--ring);
+
+  --font-display: var(--font-manrope);
+  --font-sans: var(--font-sora);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Light mode */
+:root {
+  color-scheme: light;
+
+  --background: #f1f4f2;
+  --surface: #ffffff;
+  --surface-2: #e7ece9;
+  --border: #cfd8d4;
+  --foreground: #17262a;
+  --muted: #51656a;
+
+  --accent: #1f6f65;
+  --accent-hover: #185a52;
+  --accent-soft: #d6ebe6;
+  --accent-foreground: #ffffff;
+
+  --highlight: #c99a2e;
+  --highlight-soft: #f6ead0;
+  --highlight-foreground: #2a1d03;
+
+  --success: #2f7d4f;
+  --warning: #a8620f;
+  --danger: #b3392f;
+  --info: #2c6a99;
+
+  --ring: #1f6f65;
+  --shadow: 0 1px 2px rgb(23 38 42 / 0.08), 0 4px 14px rgb(23 38 42 / 0.06);
+}
+
+/* Dark mode: mengikuti sistem, kecuali pengguna memilih light */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --background: #0e1719;
+    --surface: #152124;
+    --surface-2: #1c2b2f;
+    --border: #2b3d41;
+    --foreground: #e6eeec;
+    --muted: #9bb0ac;
+
+    --accent: #4db6a5;
+    --accent-hover: #6cc7b8;
+    --accent-soft: #17332f;
+    --accent-foreground: #06201c;
+
+    --highlight: #dcae45;
+    --highlight-soft: #302609;
+    --highlight-foreground: #241a04;
+
+    --success: #5cc084;
+    --warning: #e0a04a;
+    --danger: #ee7b70;
+    --info: #6fb2e0;
+
+    --ring: #6cc7b8;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 18px rgb(0 0 0 / 0.35);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Dark mode: dipilih manual lewat tombol toggle */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #0e1719;
+  --surface: #152124;
+  --surface-2: #1c2b2f;
+  --border: #2b3d41;
+  --foreground: #e6eeec;
+  --muted: #9bb0ac;
+
+  --accent: #4db6a5;
+  --accent-hover: #6cc7b8;
+  --accent-soft: #17332f;
+  --accent-foreground: #06201c;
+
+  --highlight: #dcae45;
+  --highlight-soft: #302609;
+  --highlight-foreground: #241a04;
+
+  --success: #5cc084;
+  --warning: #e0a04a;
+  --danger: #ee7b70;
+  --info: #6fb2e0;
+
+  --ring: #6cc7b8;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 18px rgb(0 0 0 / 0.35);
+}
+
+/* Dasar */
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
