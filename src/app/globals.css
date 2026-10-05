@@ -25,7 +25,7 @@
   --font-mono: var(--font-jetbrains-mono);
 }
 
-/* Light mode */
+/* Light mode: warna isi lebih terang, teks di atasnya gelap */
 :root {
   color-scheme: light;
 
@@ -36,10 +36,10 @@
   --foreground: #17262a;
   --muted: #51656a;
 
-  --accent: #1f6f65;
-  --accent-hover: #185a52;
+  --accent: #4db6a5;
+  --accent-hover: #3fa090;
   --accent-soft: #d6ebe6;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #06201c;
 
   --highlight: #c99a2e;
   --highlight-soft: #f6ead0;
@@ -54,26 +54,27 @@
   --shadow: 0 1px 2px rgb(23 38 42 / 0.08), 0 4px 14px rgb(23 38 42 / 0.06);
 }
 
-/* Dark mode: mengikuti sistem, kecuali pengguna memilih light */
+/* Dark mode: mengikuti sistem, kecuali pengguna memilih light.
+   Isi blok ini HARUS sama persis dengan blok [data-theme="dark"] di bawahnya. */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
     --background: #0e1719;
-    --surface: #152124;
-    --surface-2: #1c2b2f;
+    --surface: #1c2b2f;
+    --surface-2: #152124;
     --border: #2b3d41;
     --foreground: #e6eeec;
     --muted: #9bb0ac;
 
-    --accent: #4db6a5;
-    --accent-hover: #6cc7b8;
+    --accent: #1f6f65;
+    --accent-hover: #25796e;
     --accent-soft: #17332f;
-    --accent-foreground: #06201c;
+    --accent-foreground: #ffffff;
 
-    --highlight: #dcae45;
+    --highlight: #8a6513;
     --highlight-soft: #302609;
-    --highlight-foreground: #241a04;
+    --highlight-foreground: #fff7e0;
 
     --success: #5cc084;
     --warning: #e0a04a;
@@ -96,14 +97,14 @@
   --foreground: #e6eeec;
   --muted: #9bb0ac;
 
-  --accent: #4db6a5;
-  --accent-hover: #6cc7b8;
+  --accent: #1f6f65;
+  --accent-hover: #25796e;
   --accent-soft: #17332f;
-  --accent-foreground: #06201c;
+  --accent-foreground: #ffffff;
 
-  --highlight: #dcae45;
+  --highlight: #8a6513;
   --highlight-soft: #302609;
-  --highlight-foreground: #241a04;
+  --highlight-foreground: #fff7e0;
 
   --success: #5cc084;
   --warning: #e0a04a;
@@ -119,9 +120,14 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-display;
   }
+
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
