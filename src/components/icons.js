@@ -87,3 +87,15 @@ export const DiscountIcon = (props) => (
     <path d="M14.5 9.5l-5 5" />
   </Icon>
 );
+
+export const PlusIcon = (props) => (
+  <Icon {...props}>
+    <path d="M12 5v14M5 12h14" />
+  </Icon>
+);
+
+export const MinusIcon = (props) => (
+  <Icon {...props}>
+    <path d="M5 12h14" />
+  </Icon>
+);
