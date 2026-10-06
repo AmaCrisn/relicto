@@ -79,7 +79,7 @@ export default function HeroBanners() {
   }, [paused]);
 
   return (
-    <section aria-label="Promo dan koleksi pilihan" className="mx-auto w-full max-w-7xl py-6 px-8">
+    <section aria-label="Promo dan koleksi pilihan" className="mx-auto w-full max-w-7xl py-6 px-4 sm:px-8">
       <div
         ref={scrollerRef}
         onScroll={onScroll}

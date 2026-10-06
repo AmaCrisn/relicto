@@ -14,7 +14,7 @@ export default function Home() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl w-full mx-auto px-8">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-8">
         {/* Kategori */}
         <div className="mb-12">
           <p className="font-bold text-2xl md:text-3xl mb-4 underline underline-offset-4 decoration-accent">Kategori</p>
