@@ -21,7 +21,7 @@ export const BANNERS = [
   {
     id: "terbaru",
     title: "Koleksi Terbaru",
-    subtitle: "Komik, action figure, dan kartu langka yang baru saja tiba",
+    subtitle: "Barang-barang langka yang baru saja tiba",
     cta: "Jelajahi koleksi",
     href: "/produk?urut=terbaru",
     span: "md:col-span-2",
