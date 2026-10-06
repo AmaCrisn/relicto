@@ -118,14 +118,18 @@
 /* Dasar */
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
+    font-family: var(--font-display);
   }
 
   :focus-visible {
