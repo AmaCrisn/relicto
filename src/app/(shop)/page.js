@@ -3,7 +3,7 @@ import HeroBanners from "@/components/HeroBanners";
 import { categories } from "@/lib/data";
 import Link from "next/link";
 import { categoryIcons } from "@/components/category-icons";
-import Recommendation from "@/components/recommendation";
+import Recommendation from "@/components/productsCard";
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
               return (
                 <Link
                   key={c.id}
-                  href={`/produk?kategori=${c.slug}`}
+                  href={`/cari?kategori=${c.slug}`}
                   className="flex justify-center flex-col items-center p-2 border-border border-2 rounded-2xl text-lg
                   hover:bg-black/5 hover:shadow-lg hover:underline underline-offset-2 decoration-2 decoration-accent
                   transition-all
