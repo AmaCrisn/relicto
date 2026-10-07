@@ -1,18 +1,20 @@
 'use client'
 
 import Image from "next/image";
-import { products, formatRupiah, finalPrice, getRelatedProducts } from "@/lib/data";
+import { products, formatRupiah, finalPrice, getRelatedProducts, searchProducts } from "@/lib/data";
 import Link from "next/link";
 import { FavoriteIcon } from "./icons";
 import { useState } from "react";
 
 const showMoreButtonClass = "px-6 py-2 border-accent border-2 rounded-xl text-xl text-accent font-bold hover:cursor-pointer hover:text-accent-hover hover:border-accent-hover hover:bg-black/5 hover:shadow-lg transition-colors";
 
-export default function Recommendation({ id = null } = {}) {
-    const filtered = (id !== null ? getRelatedProducts(id, 12) : products);
+export default function ProductsCard({ type = "recommendation", id = "", keyword = "", kategori = "" } = {}) {
     const [visibleCount, setVisibleCount] = useState(24);
-    const visibleProducts = filtered.slice(0, visibleCount);
-    const hasMore = visibleCount < filtered.length;
+    const filteredProducts = (type !== "recommendation"
+        ? searchProducts({ q: keyword, kategori })
+        :(id !== "" ? getRelatedProducts(id, 12) : products));
+    const visibleProducts = filteredProducts.slice(0, visibleCount);
+    const hasMore = visibleCount < filteredProducts.length;
     return (
         <div>
             <div className="grid gap-2 grid-cols-2 sm:grid-cols-4 md:grid-cols-6 shrink-0">
