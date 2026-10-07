@@ -256,12 +256,12 @@ export function getProductReviews(id) {
 
 // Meniru parameter alamat yang dipakai banner: ?kategori= ?urut= ?label= ?promo= ?q=
 export function searchProducts({ q = "", kategori, urut = "terbaru", label, promo } = {}) {
-  const keyword = q.trim().toLowerCase();
   let result = products.filter((p) => {
     if (kategori && p.category_slug !== kategori) return false;
     if (label && p.label !== label) return false;
     if (promo === "diskon" && !p.discount_percent) return false;
-    if (keyword) {
+    if (q) {
+      const keyword = q.trim().toLowerCase();
       const kategoriNama = getCategory(p.category_slug)?.name.toLowerCase() ?? "";
       const haystack = `${p.name} ${p.description} ${kategoriNama}`.toLowerCase();
       if (!haystack.includes(keyword)) return false;
