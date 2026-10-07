@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { finalPrice, formatRupiah, products } from "@/lib/data";
-import Recommendation from "@/components/recommendation";
+import Recommendation from "@/components/productsCard";
 import { CartIcon, DiscountIcon, FavoriteIcon, MinusIcon, PlusIcon } from "@/components/icons";
 import { useState } from "react";
 import QuantityStepper from "@/components/QuantityStepper";
@@ -36,18 +36,20 @@ export default function produk() {
                             <p className="text-muted">Stok: {product.stock}</p>
                         </div>
                         <div className="border-b-2 border-border pb-4 mb-4">
-                            <p className="text-2xl text-accent font-bold mb-1">{formatRupiah(finalPrice(product))}</p>
-                            {product.discount_percent > 0 ?
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="flex items-center px-2 py-1 text-danger bg-danger/20 border-2 border-danger/65 rounded-xl">
-                                        <DiscountIcon className="size-6 shrink-0 mr-1" />
-                                        <p>%{product.discount_percent}</p>
+                            <div className="mb-4 gap-1 flex flex-col">
+                                <p className="text-2xl text-accent font-bold">{formatRupiah(finalPrice(product))}</p>
+                                {product.discount_percent > 0 ?
+                                    <div className="flex items-center gap-2">
+                                        <div className="flex items-center px-2 py-1 text-danger bg-danger/20 border-2 border-danger/65 rounded-xl">
+                                            <DiscountIcon className="size-6 shrink-0 mr-1" />
+                                            <p>%{product.discount_percent}</p>
+                                        </div>
+                                        <p className="line-through text-muted">
+                                            {formatRupiah(product.price)}
+                                        </p>
                                     </div>
-                                    <p className="line-through text-muted">
-                                        {formatRupiah(product.price)}
-                                    </p>
-                                </div>
-                                : null}
+                                    : null}
+                            </div>
 
                             <QuantityStepper value={qty} onChange={setQty} max={product.stock} />
 
